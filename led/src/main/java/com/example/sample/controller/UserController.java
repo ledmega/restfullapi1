@@ -2,16 +2,22 @@ package com.example.sample.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.sample.common.domain.Result;
 import com.example.sample.data.entity.ComUser;
 import com.example.sample.model.ApiResponseMessage;
+import com.example.sample.repository.MemberRepository;
+import com.example.sample.service.JwtService;
 import com.example.sample.service.UserService;
 
 import io.swagger.annotations.Api;
@@ -24,6 +30,12 @@ public class UserController {
 	
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	private JwtService jwtService;
+	
+	@Autowired
+	private MemberRepository memberRep;
 	
 	 @RequestMapping(value = "", method = RequestMethod.GET)
 	    @ApiOperation(value = "사용자 목록 조회", notes = "사용자 목록을 조회하는 API.")
@@ -83,6 +95,23 @@ public class UserController {
 	        }
 	         
 	        return response;
+	    }
+	    
+	   /* @RequestMapping(value = "/demo", method= RequestMethod.GET)
+	    public String demo(Model model) {
+
+
+	        model.addAttribute("result", memberRep.getUserList());
+	        return "demo";
+	    }*/
+	    
+	    @PostMapping(value="/signin")
+	    public Result signin(String id, String pw, HttpServletResponse response) {
+	    	Result result = Result.successInstance();
+	    	//MemberMaster loginMember = memberService.signin(email, password);
+	    	//userService.signin(id,pw);
+	    	
+	    	return result;
 	    }
 
 

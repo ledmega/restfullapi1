@@ -3,7 +3,7 @@ package com.example.sample.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
@@ -37,8 +37,8 @@ public class UserServiceImpl implements UserService {
     public void insertUser(ComUser user) {
     	
     	String pw = user.getUserpw();
-    	String encodedPw = new BCryptPasswordEncoder().encode(pw);
-    	user.setUserpw(encodedPw);
+    	//String encodedPw = new BCryptPasswordEncoder().encode(pw);
+    	//user.setUserpw(encodedPw);
         userRepository.save(user);
     }
  
