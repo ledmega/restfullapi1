@@ -22,7 +22,7 @@ public class AuthenticationCtr {
 	@Autowired
 	private MemberService memberService;
 	
-	@PostMapping(value="/auth0")
+	@RequestMapping(value="/auth0")
 	private void getToken(HttpServletRequest req, ModelMap model) {
 		Result result = Result.successInstance();
 		String jsonData = "";
